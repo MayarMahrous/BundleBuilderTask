@@ -133,6 +133,7 @@ const BundleReview = ({
         <span>Review</span>
       </div>
       <div className="content">
+      <div className="productsContent">
         <div className="info">
           <h2>Your security system</h2>
           <p>
@@ -150,6 +151,7 @@ const BundleReview = ({
                     (product: SelectedProduct) =>
                       product.stepId === step.id && (
                         <div className="product" key={product.id}>
+                          <div className="productInfo">
                           <img
                             src={
                               product.image ||
@@ -158,6 +160,8 @@ const BundleReview = ({
                             alt={product.name}
                           />
                           <span className="productName">{product.name}</span>
+                          </div>
+                          <div className="productInfo">
                           <QuantitySelector
                             counter={product.quantity}
                             increaseQuantity={() =>
@@ -188,6 +192,7 @@ const BundleReview = ({
                                   : `$${product.afterDiscount}`}
                               </span>
                             )}
+                          </div>
                           </div>
                         </div>
                       ),
@@ -238,7 +243,8 @@ const BundleReview = ({
           </div>
         )}
         <Shipping />
-        <Checkout totalPrice={totalPrice} handleSaveLater={saveProductsLater}/>
+      </div>
+      <Checkout totalPrice={totalPrice} handleSaveLater={saveProductsLater}/>
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ const Checkout = ({ totalPrice, handleSaveLater }:CheckoutProps) => {
       
     </div>
     <div className="finalStep">
-        {totalPrice.afterDiscount > 0 && <span className="message">Congrats! You’re saving $`${Number((totalPrice.beforeDiscount - totalPrice.afterDiscount).toFixed(2))}`on your security bundle!</span>}
+        {totalPrice.afterDiscount > 0 && <span className="message">Congrats! You’re saving ${Number((totalPrice.beforeDiscount - totalPrice.afterDiscount).toFixed(2))} on your security bundle!</span>}
         <button type="button" className="checkoutBtn">Checkout</button>
         <button type="button" className="saveLink" onClick={handleSaveLater}>Save my system for later</button>
       </div>

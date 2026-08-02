@@ -1,5 +1,21 @@
 @font-face {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Regular';
+  src: url('./Gilroy-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-Medium';
+  src: url('./Gilroy-Medium.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-SemiBold';
   src: url('./Gilroy-SemiBold.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
@@ -7,24 +23,24 @@
 }
 
 @font-face {
-  font-family: 'Gilroy';
-  src: url('./Gilroy-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('./Gilroy-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Bold';
   src: url('./Gilroy-Bold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-RegularItalic';
+  src: url('./Gilroy-RegularItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('./TT Norms Pro Bold.otf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

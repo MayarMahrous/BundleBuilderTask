@@ -4,12 +4,10 @@
   align-items: flex-start;
   padding: 15px 0px 0px;
   gap: 5px;
-  position: absolute;
-  width: 25%;
-  left: 919px;
-  top: 49.4px;
   background: #edf4ff;
   border-radius: 10px;
+  height: fit-content;
+  overflow: hidden;
   .header {
     display: flex;
     flex-direction: row;
@@ -18,7 +16,6 @@
     padding: 0px 15px;
     span {
       font-family: "Gilroy-Medium";
-      font-style: normal;
       font-weight: 400;
       font-size: 12px;
       line-height: 100%;
@@ -37,6 +34,13 @@
     padding: 20px 20px 31px;
     gap: 10px;
     background: #edf4ff;
+    .productsContent {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 10px;
+    }
     .info {
       display: flex;
       flex-direction: column;
@@ -95,9 +99,15 @@
       .product {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         padding: 0px;
         gap: 16px;
         width: 100%;
+        .productInfo {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
         img {
           width: 41px;
           height: 41px;
@@ -213,8 +223,6 @@
             font-weight: 400;
             font-size: 12px;
             line-height: 15px;
-            leading-trim: both;
-            text-edge: cap;
             letter-spacing: -0.05em;
             color: #ffffff;
           }
@@ -296,10 +304,42 @@
         text-decoration-line: underline;
         color: #484848;
         background: none;
-        border:none;
+        border: none;
         width: 100%;
         justify-content: center;
       }
     }
+  }
+}
+
+@media (max-width: 1550px) {
+  .reviewContainer {
+    width: 100%;
+
+    .content {
+      flex-direction: row;
+      box-sizing: border-box;
+      width: 100%;
+      gap: 52px;
+    }
+
+    .productsContent {
+      width: 60%;
+    }
+
+    .reviewFooter {
+      width: 40%;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .reviewContainer .content {
+    flex-direction: column;
+  }
+
+  .reviewContainer .productsContent,
+  .reviewContainer .reviewFooter {
+    width: 100%;
   }
 }

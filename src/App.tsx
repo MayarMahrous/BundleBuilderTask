@@ -5,6 +5,7 @@ import BundleBuilder from "./components/BundleBuilder/BundleBuilder";
 import BundleReview from "./components/BundleReview/BundleReview";
 import { SelectedPlan, SelectedProduct, Step } from "./models/bundle";
 import { SAVEDPLANS, SAVEDPRODUCTS } from "./constants/quantityActions";
+import { productsService } from "./services/productsService";
 
 
 
@@ -16,12 +17,18 @@ function App() {
   const [selectedPlans, setSelectedPlans] = useState<SelectedPlan[]>([]);
 
   useEffect(() => {
-    fetch("/data/bundle-builder-data.json")
-      .then((data) => data.json())
-      .then((res) => {
-        setSteps(res.steps);
-      });
-      getSavedData();
+    const loadProducts = async () => {
+      try {
+        const data : { steps: Step[] } = await productsService.getAll();
+        setSteps(data.steps);
+        getSavedData();
+      } catch (error) {
+        console.error("Error loading products:", error);
+      }
+    };
+
+    loadProducts();
+    getSavedData();
   }, []);
 
   const getSavedData = () => {
