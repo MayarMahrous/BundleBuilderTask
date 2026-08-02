@@ -178,16 +178,16 @@ const BundleReview = ({
                           <div className="price">
                             <span
                               className={
-                                product.afterDiscount > 0
+                                Number(product.discount) > 0
                                   ? "beforeDiscount"
                                   : ""
                               }
                             >
                               ${product.beforeDiscount}
                             </span>
-                            {product.afterDiscount > 0 && (
+                            {Number(product.discount) > 0 && (
                               <span>
-                                {Number(product.afterDiscount) === 0
+                                {Number(product.discount) === 100
                                   ? "FREE"
                                   : `$${product.afterDiscount}`}
                               </span>
@@ -223,14 +223,14 @@ const BundleReview = ({
                         <div className="price">
                           <span
                             className={
-                              plan.afterDiscount > 0 ? "beforeDiscount" : ""
+                              Number(plan.discount) > 0 ? "beforeDiscount" : ""
                             }
                           >
                             ${plan.beforeDiscount}/mo
                           </span>
-                          {plan.afterDiscount > 0 && (
+                          {Number(plan.discount) > 0 && (
                             <span>
-                              {Number(plan.afterDiscount) === 0
+                              {Number(plan.discount) === 100
                                 ? "FREE"
                                 : `$${plan.afterDiscount}/mo`}
                             </span>
