@@ -4,10 +4,8 @@
   align-items: flex-start;
   padding: 15px 0px 0px;
   gap: 5px;
-  width: 25%;
   background: #edf4ff;
   border-radius: 10px;
-  width: 399px;
   height: fit-content;
   overflow: hidden;
   .header {
@@ -18,7 +16,6 @@
     padding: 0px 15px;
     span {
       font-family: "Gilroy-Medium";
-      font-style: normal;
       font-weight: 400;
       font-size: 12px;
       line-height: 100%;
@@ -102,9 +99,15 @@
       .product {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         padding: 0px;
         gap: 16px;
         width: 100%;
+        .productInfo {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
         img {
           width: 41px;
           height: 41px;
@@ -220,8 +223,6 @@
             font-weight: 400;
             font-size: 12px;
             line-height: 15px;
-            leading-trim: both;
-            text-edge: cap;
             letter-spacing: -0.05em;
             color: #ffffff;
           }

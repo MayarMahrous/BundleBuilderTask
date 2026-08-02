@@ -151,6 +151,7 @@ const BundleReview = ({
                     (product: SelectedProduct) =>
                       product.stepId === step.id && (
                         <div className="product" key={product.id}>
+                          <div className="productInfo">
                           <img
                             src={
                               product.image ||
@@ -159,6 +160,8 @@ const BundleReview = ({
                             alt={product.name}
                           />
                           <span className="productName">{product.name}</span>
+                          </div>
+                          <div className="productInfo">
                           <QuantitySelector
                             counter={product.quantity}
                             increaseQuantity={() =>
@@ -189,6 +192,7 @@ const BundleReview = ({
                                   : `$${product.afterDiscount}`}
                               </span>
                             )}
+                          </div>
                           </div>
                         </div>
                       ),

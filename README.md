@@ -36,13 +36,15 @@ src/
     BundleBuilder/  
       BundleBuilder.tsx     # Top-level steps with products container
       ProductCard.tsx       # Individual product card showing details with quantity and variant selection
+      StepHeader.tsx        # Step title, counter of selected products, and collapse/expand
     BundleReview/ 
       BundleReview.tsx      # Cart review summary before checkout
       Checkout.tsx          # Final checkout: total price before/after discount, save-for-later
-    common
+    common/
       QuantitySelector.tsx  # Product quantity selection used in bundle builder and review
+  constants/                # Shared constants like quantity actions and storage keys
   services/                 # Data-fetching services (e.g. productsService)
-  types/                    # TypeScript interfaces (Step, Product, etc.)
+  models/                   # TypeScript interfaces (Step, Product, etc.)
   App.tsx
 ```
 

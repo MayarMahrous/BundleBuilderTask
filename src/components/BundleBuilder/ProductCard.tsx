@@ -1,4 +1,4 @@
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Product,
   ProductType,
@@ -131,7 +131,7 @@ const ProductCard = ({
       : updateProduct(DECREMENT, step, product);
   };
 
-  const handlePlanSelection = (event:any) => {
+  const handlePlanSelection = (event:React.ChangeEvent<HTMLInputElement>) => {
     setPlanChecked(prevChecked => !prevChecked);
     updatePlan(step,product,event.target.checked);
   }
@@ -199,7 +199,7 @@ const ProductCard = ({
             />
           )}
           {step.isPlan && (
-            <div className="ui checkbox">
+            <div>
               <input type="checkbox" name={product.title} checked={planChecked} onChange={(event) => handlePlanSelection(event)} />
             </div>
           )}

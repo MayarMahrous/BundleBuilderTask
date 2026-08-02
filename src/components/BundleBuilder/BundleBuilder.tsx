@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './BundleBuilder.css';
 import {
   Product,
   ProductType,
@@ -6,15 +7,12 @@ import {
   SelectedProduct,
   Step,
 } from "../../models/bundle";
-import camerasIcon from "../../assets/icons/cameras.svg";
-import planIcon from "../../assets/icons/plans.svg";
-import sensorsIcon from "../../assets/icons/sensors.svg";
-import protectionIcon from "../../assets/icons/protection.svg";
 import ProductCard from "./ProductCard";
 import {
   DECREMENT,
   INCREMENT,
 } from "../../constants/quantityActions";
+import StepHeader from "./StepHeader";
 
 interface builderProps {
   steps: Step[];
@@ -36,13 +34,6 @@ const BundleBuilder = ({
     [],
   );
   const [selectedPlans, setSelectedPlans] = useState<SelectedPlan[]>([]);
-
-  const icons: Record<string, string> = {
-    cameras: camerasIcon,
-    plan: planIcon,
-    sensors: sensorsIcon,
-    accessories: protectionIcon,
-  };
 
   useEffect(() => {
     if (steps.length > 0) {
@@ -176,26 +167,7 @@ const BundleBuilder = ({
                 step {index + 1} of {steps.length}
               </span>
               <div className="step-container">
-                <div className="step-header">
-                  <div className="step">
-                    <img src={icons[step.name.toLowerCase()]} alt={step.name} />
-                    <h1>{step.title}</h1>
-                  </div>
-                  <div className="selection">
-                    {(() => {
-                     const selections : any = step.isPlan ? selectedPlans : selectedProducts;
-                     const matchCount = selections.filter(
-                       (item: SelectedPlan | SelectedProduct) => item.stepId == step.id,
-                     ).length;
-                     return matchCount > 0 && <span>{matchCount} selected</span>;
-                    })()}
-                    <div className="chevronHitArea" role="button" aria-label="Toggle step" aria-expanded={selectedStep === step.name} onClick={() => handleStepSelection(step.name)}>
-                    <div
-                      className={`chevron ${selectedStep === step.name ? "upChevron" : "downChevron"}`}
-                    ></div>
-                    </div>
-                  </div>
-                </div>
+                <StepHeader step={step} selectedItems={step.isPlan ? selectedPlans : selectedProducts} currentStep={selectedStep} selectStep={handleStepSelection}/> 
                 {step.name == selectedStep && step.products.length > 0 && (
                   <>
                     <div className="productsContainer">
