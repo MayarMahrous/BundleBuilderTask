@@ -62,6 +62,7 @@ const BundleBuilder = ({
     setSelectedStep(stepName);
   };
 
+
   const handlePlanChange = (
     step: Step,
     product: Product,
@@ -181,22 +182,18 @@ const BundleBuilder = ({
                     <h1>{step.title}</h1>
                   </div>
                   <div className="selection">
-                    {selectedProducts.some(
-                      (item: SelectedProduct) => item.stepId == step.id,
-                    ) && (
-                      <span>
-                        {
-                          selectedProducts.filter(
-                            (item: SelectedProduct) => item.stepId == step.id,
-                          ).length
-                        }{" "}
-                        selected
-                      </span>
-                    )}
+                    {(() => {
+                     const selections : any = step.isPlan ? selectedPlans : selectedProducts;
+                     const matchCount = selections.filter(
+                       (item: SelectedPlan | SelectedProduct) => item.stepId == step.id,
+                     ).length;
+                     return matchCount > 0 && <span>{matchCount} selected</span>;
+                    })()}
+                    <div className="chevronHitArea" role="button" aria-label="Toggle step" aria-expanded={selectedStep === step.name} onClick={() => handleStepSelection(step.name)}>
                     <div
                       className={`chevron ${selectedStep === step.name ? "upChevron" : "downChevron"}`}
-                      onClick={() => handleStepSelection(step.name)}
                     ></div>
+                    </div>
                   </div>
                 </div>
                 {step.name == selectedStep && step.products.length > 0 && (
