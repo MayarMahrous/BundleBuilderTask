@@ -4,7 +4,7 @@ import "./assets/fonts/fonts.css";
 import BundleBuilder from "./components/BundleBuilder/BundleBuilder";
 import BundleReview from "./components/BundleReview/BundleReview";
 import { SelectedPlan, SelectedProduct, Step } from "./models/bundle";
-import { SAVEDPLANS, SAVEDPRODUCTS } from "./constants/quantityActions";
+import { BUILDERACTION, REVIEWACTION, SAVEDPLANS, SAVEDPRODUCTS } from "./constants/quantityActions";
 import { productsService } from "./services/productsService";
 
 
@@ -15,6 +15,7 @@ function App() {
     [],
   );
   const [selectedPlans, setSelectedPlans] = useState<SelectedPlan[]>([]);
+  const [action, setAction] = useState<string>("");
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -38,8 +39,11 @@ function App() {
     savedPlans && handleSelectedPlans(JSON.parse(savedPlans));
   };
 
-  const handleSelectedProducts = (products: SelectedProduct[]) => {
+  const handleSelectedProducts = (products: SelectedProduct[],action?: string) => {
     setSelectedProducts(products);
+    if(action){
+      setAction(action);
+    }
   };
 
   const handleSelectedPlans = (plans: SelectedPlan[]) => {
@@ -52,13 +56,14 @@ function App() {
         steps={steps}
         products={selectedProducts}
         plans={selectedPlans}
-        selectProducts={handleSelectedProducts}
+        selectProducts={(products : SelectedProduct[]) => handleSelectedProducts(products, BUILDERACTION)}
+        action={action}
         updatePlans={handleSelectedPlans}
       />
       <BundleReview
         steps={steps}
         products={selectedProducts}
-        updateProducts={handleSelectedProducts}
+        updateProducts={(products : SelectedProduct[]) => handleSelectedProducts(products, REVIEWACTION)}
         plans={selectedPlans}
       />
     </div>

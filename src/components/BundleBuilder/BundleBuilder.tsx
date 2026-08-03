@@ -17,6 +17,7 @@ import StepHeader from "./StepHeader";
 interface builderProps {
   steps: Step[];
   selectProducts: (products: SelectedProduct[]) => void;
+  action: string;
   products: SelectedProduct[];
   plans: SelectedPlan[];
   updatePlans: (plans: SelectedPlan[]) => void;
@@ -28,6 +29,7 @@ const BundleBuilder = ({
   products,
   plans,
   updatePlans,
+  action
 }: builderProps) => {
   const [selectedStep, setSelectedStep] = useState("");
   const [selectedProducts, setSelectedProducts] = useState<SelectedProduct[]>(
@@ -43,7 +45,8 @@ const BundleBuilder = ({
 
   useEffect(() => {
     setSelectedProducts(products);
-  }, [products]);
+    setSelectedPlans(plans);
+  }, [products, plans]);
 
   const handleStepSelection = (stepName: string) => {
     if (selectedStep === stepName) {
@@ -179,6 +182,7 @@ const BundleBuilder = ({
                           updateProduct={handleProductSelection}
                           selectedProducts={selectedProducts}
                           updatePlan={handlePlanChange}
+                          action={action}
                         />
                       ))}
                     </div>

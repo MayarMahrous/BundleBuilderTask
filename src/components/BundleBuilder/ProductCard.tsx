@@ -7,7 +7,7 @@ import {
   Step,
 } from "../../models/bundle";
 import camUnlimitedIcon from "../../assets/icons/cam-unlimited.svg";
-import { DECREMENT, INCREMENT } from "../../constants/quantityActions";
+import { BUILDERACTION, DECREMENT, INCREMENT, REVIEWACTION } from "../../constants/quantityActions";
 import QuantitySelector from "../common/QuantitySelector";
 
 interface ProductCardProps {
@@ -15,6 +15,7 @@ interface ProductCardProps {
   product: Product;
   selectedProducts: SelectedProduct[];
   selectedPlans: SelectedPlan[];
+  action: string;
   updateProduct: (
     action: string,
     step: Step,
@@ -30,7 +31,8 @@ const ProductCard = ({
   selectedProducts,
   selectedPlans,
   updateProduct,
-  updatePlan
+  updatePlan,
+  action
 }: ProductCardProps) => {
   const icons: Record<string, string> = {
     camunlimited: camUnlimitedIcon,
@@ -78,6 +80,10 @@ const ProductCard = ({
       setCounter(productExist?.quantity);
       productExist.color && setSelectedProductColor({ color: productExist.color, image: productExist.image, quantity: productExist.limitedQuantity });
     }else{
+      if(action === BUILDERACTION){
+        return;
+      }
+      //if I unselect item from review remove it from builder
       if(!!productWithDifferentColor.length){
         setCounter(productWithDifferentColor[0].quantity);
         setSelectedProductColor({ color: productWithDifferentColor[0].color, image: productWithDifferentColor[0].image, quantity: productWithDifferentColor[0].limitedQuantity });
