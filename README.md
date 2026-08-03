@@ -42,6 +42,7 @@ src/
       Checkout.tsx          # Final checkout: total price before/after discount, save-for-later
     common/
       QuantitySelector.tsx  # Product quantity selection used in bundle builder and review
+      ConfirmationModal.tsx # Confirmation model that will be shown on checkout or save later
   constants/                # Shared constants like quantity actions and storage keys
   services/                 # Data-fetching services (e.g. productsService)
   models/                   # TypeScript interfaces (Step, Product, etc.)
