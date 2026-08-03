@@ -37,7 +37,7 @@ const BundleReview = ({
     items.reduce(
       (acc, item) => {
         acc.totalBeforeDiscount += item.beforeDiscount;
-        acc.totalAfterDiscount += item.discount > 0 ? item.afterDiscount : item.beforeDiscount;
+        acc.totalAfterDiscount += item.afterDiscount;
         return acc;
       },
       { totalBeforeDiscount: 0, totalAfterDiscount: 0 },
@@ -83,7 +83,7 @@ const BundleReview = ({
                         newQuantity
                       ).toFixed(2),
                     )
-                  : 0,
+                  : Number((product.price * newQuantity).toFixed(2)),
             }
           : item;
       });
@@ -109,7 +109,7 @@ const BundleReview = ({
                         newQuantity
                       ).toFixed(2),
                     )
-                  : 0,
+                  : Number((product.price * newQuantity).toFixed(2)),
             }
           : item;
       });

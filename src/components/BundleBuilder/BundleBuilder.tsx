@@ -125,7 +125,7 @@ const BundleBuilder = ({
                     ...item,
                     quantity: newQuantity,
                     beforeDiscount: Number((selectedProduct.price * newQuantity).toFixed(2)),
-                    afterDiscount: Number(selectedProduct.discount) !== 0  ? Number(((selectedProduct.price - selectedProduct.price * (selectedProduct.discount / 100)) * newQuantity).toFixed(2)) : 0
+                    afterDiscount: Number(selectedProduct.discount) !== 0  ? Number(((selectedProduct.price - selectedProduct.price * (selectedProduct.discount / 100)) * newQuantity).toFixed(2)) : Number((selectedProduct.price * newQuantity).toFixed(2))
                   }
                 : item;
             });
@@ -148,7 +148,7 @@ const BundleBuilder = ({
         price: selectedProduct.price,
         discount: selectedProduct.discount,
         beforeDiscount: selectedProduct.price,
-        afterDiscount: Number(selectedProduct.discount) !== 0 ?  Number((selectedProduct.price - selectedProduct.price * (selectedProduct.discount / 100)).toFixed(2)) : 0,
+        afterDiscount: Number(selectedProduct.discount) !== 0 ?  Number((selectedProduct.price - selectedProduct.price * (selectedProduct.discount / 100)).toFixed(2)) : selectedProduct.price,
       };
 
       setSelectedProducts((prevProducts) => [...prevProducts, product]);
